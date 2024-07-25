@@ -4,23 +4,23 @@ namespace CardapioWeb.Repositories
 {
     public class ProdutoRespository: IProdutoRepository //herdando atributos do IProduto
     {
-        private readonly AppDBContext _dbContext; // essa classe precisa usar recurso do appDBcontext
+        private readonly AppDBContext _dbcontext; // essa classe precisa usar recurso do appDBcontext
 
         public ProdutoRespository(AppDBContext dbContext) //metodo construtor
         {
-            _dbContext = dbContext;
+            _dbcontext = dbContext;
         }
         public IEnumerable<Produto> GetAll()
         {
-            return _dbContext.Produtos.ToList(); //tolist força a ser uma lista
+            return _dbcontext.Produtos.ToList(); //tolist força a ser uma lista
         }
         public Produto GetById(int id)
         {
-            return _dbContext.Produtos.FirstOrDefault(p => p.Id == id); //busca o id individualmente
+            return _dbcontext.Produtos.FirstOrDefault(p => p.Id == id); //busca o id individualmente
         }
         public IEnumerable<Produto> GetByPreferido()
         {
-            return _dbContext.Produtos.Where(p => p.Produto_Preferido).ToList();   
+            return _dbcontext.Produtos.Where(p => p.Produto_Preferido).ToList();   
         }
     }
 }
